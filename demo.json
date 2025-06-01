@@ -1,0 +1,131 @@
+{
+  "uuid": "430e2c7e-abd9-4e05-b352-a876eb2d36c9",
+  "lastMigration": 33,
+  "name": "Demo API",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "bac62d64-22f0-49f7-856a-7b3ab3a26f2a",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "",
+      "responses": [
+        {
+          "uuid": "4bbd4a97-005f-4790-807c-1850a2b6f371",
+          "body": "{\n  \"data\": \"hello\",\n  \"uuid\": \"{{uuid}}\",\n  \"created_at\": \"{{now 'yyyy-MM-ddTHH:mm:ss.SSS'}}\",\n  \"debugNumber\": \"{{queryParam 'number'}}\",\n  \"cardType\": \"{{~#switch (substr (queryParam 'number') 0 1)~}}{{~#case '4'~}}Visa{{~/case~}}{{~#case '5'~}}MasterCard{{~/case~}}{{~#case '6'~}}Discover{{~/case~}}{{~#case '2'~}}MasterCard{{~/case~}}{{~#case '3'~}}{{~#switch (substr (queryParam 'number') 0 2)~}}{{~#case '34'~}}American Express{{~/case~}}{{~#case '37'~}}American Express{{~/case~}}{{~#default~}}Unknown{{~/default~}}{{~/switch~}}{{~/case~}}{{~#default~}}Unknown{{~/default~}}{{~/switch~}}\"\n  \"helloworld\" : \"{{hello}}\",\n  \"slug\": \"{{slugify \"dog eats dog\"}}\",\n  \"body\": \"{{add 7 5}}\",\n  \"test\": \"{{test \"foobar\" (toRegex \"^foo$\")}}\",\n  \"body2\": \"2 + 3 = {{add 2 3}}, hello = {{hello}}\",\n  \"cardType\": \"{{cardType (queryParam 'number')}}\",\n  \"errorCode\" : \"{{declineCode (queryParam 'amount')}}\",\n  \"errorDescription\": {{errorDescription (queryParam 'amount')}}\"\"\n\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "ebe028ab-5c5f-488b-858f-5b195ebf8db6",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": " (copy)",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "streamingMode": null,
+      "streamingInterval": 0
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "bac62d64-22f0-49f7-856a-7b3ab3a26f2a"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [
+    {
+      "uuid": "c0019df0-49a9-42c8-88a9-78e28067284d",
+      "id": "ah1m",
+      "name": "Users",
+      "documentation": "",
+      "value": "[\n  {{#repeat 50}}\n  {\n    \"id\": \"{{faker 'string.uuid'}}\",\n    \"username\": \"{{faker 'internet.userName'}}\"\n  }\n  {{/repeat}}\n]"
+    }
+  ],
+  "callbacks": []
+}

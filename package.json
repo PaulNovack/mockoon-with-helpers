@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "@mockoon/cli": "^9.2.0",
+    "handlebars": "^4.7.8",
+    "handlebars-helpers": "^0.10.0"
+  }
+}
