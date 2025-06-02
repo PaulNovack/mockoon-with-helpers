@@ -22,6 +22,13 @@ sudo kill -9 $(lsof -ti :3001)
 ### Add Commands
 Follow the examples of hello, cardType and errorCode
 
+### Docker
+
+docker build -t fu_mockoon .
+
+docker run -p 3000:3000 fu_mockoon
+
+
 ### Get endpoint included
 
 curl -X GET "http://127.0.0.1:3001/?title=Hello&number=4688390729972915&letter=5&amount=99104"
