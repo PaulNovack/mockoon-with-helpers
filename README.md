@@ -31,7 +31,7 @@ docker run --rm -it   -v "$(pwd)":/app   -p 3000:3000   fu_mockoon
 
 ### Get endpoint included
 
-curl -X GET "http://127.0.0.1:3001/?title=Hello&number=4688390729972915&letter=5&amount=99104"
+curl -X GET "http://127.0.0.1:3000/?title=Hello&number=4688390729972915&letter=5&amount=99104"
 
 Configuration for this endpoint in demo.json
 
