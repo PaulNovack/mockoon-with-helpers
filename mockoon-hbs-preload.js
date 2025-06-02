@@ -3,11 +3,7 @@ const Handlebars = require(
     require.resolve('handlebars', { paths: [__dirname] })
 );
 
-// 2. Inject all of handlebars-helpers into that instance
 require('handlebars-helpers')({ handlebars: Handlebars });
-
-
-
 
 const declineMap = {
     99101: 'INSUFFICIENT_FUNDS',
@@ -41,14 +37,9 @@ const declineMap = {
 };
 
 Handlebars.registerHelper('declineCode', (amount) => {
-    // Coerce to number (in case amount was passed as a string)
     const key = Number(amount);
     return declineMap[key] || '';
 });
-
-// ─────────────────────────────────────────────────────────────────────────────
-//  (optional) verify registration
-// ─────────────────────────────────────────────────────────────────────────────
 console.log(
     '[HBS-PRELOAD] declineCode() registered? →',
     typeof Handlebars.helpers.declineCode === 'function' ? '✔' : '✘'
@@ -56,14 +47,11 @@ console.log(
 
 
 Handlebars.registerHelper('cardType', (raw) => {
-    // Strip non‐digits just in case someone passes spaces or dashes
     const num = String(raw || '').replace(/\D/g, '');
-
     // Visa: length 13 or 16, starts with 4
     if (/^4\d{12}(?:\d{3})?$/.test(num)) {
         return 'Visa';
     }
-
     // MasterCard:
     //  - 51–55 prefix (“5[1-5]” + 14 digits)
     //  - or 2221–2720 prefix (per the newer 2-series BINs)
@@ -74,17 +62,14 @@ Handlebars.registerHelper('cardType', (raw) => {
     ) {
         return 'MasterCard';
     }
-
     // American Express: starts with 34 or 37, total 15 digits
     if (/^3[47]\d{13}$/.test(num)) {
         return 'American Express';
     }
-
     // Discover: 6011xxxx... or 65xxxx... (total 16 digits)
     if (/^6(?:011|5\d{2})\d{12}$/.test(num)) {
         return 'Discover';
     }
-
     return 'Unknown';
 });
 
@@ -92,7 +77,6 @@ console.log(
     '[HBS-PRELOAD] cardType() registered? →',
     typeof Handlebars.helpers.cardType === 'function' ? '✔' : '✘'
 );
-
 Handlebars.registerHelper('hello', () => 'world');
 console.log(
     '[HBS-PRELOAD] After patch: ',
