@@ -38,7 +38,7 @@ const declineMap = {
 
 Handlebars.registerHelper('declineCode', (amount) => {
     const key = Number(amount);
-    return declineMap[key] || '';
+    return declineMap[key] || 'APPROVED';
 });
 console.log(
     '[HBS-PRELOAD] declineCode() registered? →',
