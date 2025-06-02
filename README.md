@@ -26,7 +26,7 @@ Follow the examples of hello, cardType and errorCode
 
 docker build -t fu_mockoon .
 
-docker run -p 3000:3000 fu_mockoon
+docker run --rm -it   -v "$(pwd)":/app   -p 3000:3000   fu_mockoon
 
 
 ### Get endpoint included
